@@ -2,11 +2,11 @@
 2-D rhythm game in the style of Guitar Hero
 
 # design goals
-- focus on clarity and customizability
-- abstract global constants/static data away from main game loops and functions
+- clarity, customizability
+- abstract global constants/static data away from main game loops & functions
 
 # to-do, features to add
-- chords
-- sustain (just a matter of .blitting a rect() for some # frames after note)
+- 3+ note chords (pygame seems to max out performance at 2)
+- sustain (just a matter of .blitting a rect() for some # px after note)
 - post-game score/stats screen
 - add guitar controller support via usb dongle (wii)
