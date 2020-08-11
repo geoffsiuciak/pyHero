@@ -1,12 +1,14 @@
 import pygame
+import pygame
 import os
 import random
 import time
 
 import data
 import actions
-import note
+from stats import Stats
 
+# INIT PYGAME, ASSETS
 pygame.init()
 pygame.mixer.init()
 pygame.font.init()
@@ -14,7 +16,6 @@ clock = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((data.WIDTH, data.HEIGHT))
 pygame.display.set_caption(data.CAPTION)
 actions.loadAssets()
-print(len(data.NOTES_PNG))
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -27,87 +28,56 @@ def startScreen():
         actions.drawStartScreen(SCREEN)
         clock.tick(data.FPS)
 
-        for event in pygame.event.get():
-            # GREEN
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_d:
-                    playSong()
-            #     # QUIT
-            if event.type == pygame.QUIT:
-                start_screen = False
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RETURN]:
+            menuScreen()
 
-        pygame.display.flip()
-        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                quit()
+
+        actions.updateSCREEN()
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # STARTUP SCREEN
 def menuScreen():
     start_screen = True
-
     while start_screen:
-
-        actions.drawStartScreen(SCREEN)
         clock.tick(data.FPS)
+        actions.drawMenuScreen(SCREEN)
 
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_d]:
+            start_screen = False
+            playSong(data.SONG_1)  # return from function
         for event in pygame.event.get():
-            # GREEN
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_d:
-                    playSong()
-
-        current_keys = pygame.event.get_pressed()
-        if current_keys[pygame.K_RETURN]:
-            playSong()
-
             if event.type == pygame.QUIT:
-                start_screen = False
-
-        pygame.display.flip()
-        pygame.display.update()
+                quit()
+        actions.updateSCREEN()
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # SONG PLAY THROUGH LOOP
-def playSong():
+def playSong(song):
+    # LOAD NOTE OBJECTS INTO LIST
+    NOTES, notes_onScreen = actions.MIDItoList(song)
+    game_stats = Stats(len(NOTES))
+
     playing = True
     actions.engageButtons(SCREEN)
     while playing:
-
-        # redraw WIN after each event
-        actions.drawStaticAssets(SCREEN)
-
         clock.tick(data.FPS)
-
-        for event in pygame.event.get():
-            # GREEN
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
-                    actions.drawPushed(SCREEN, data.BUTTON_TOTAL)
-            # RED
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_d:
-                    actions.drawPushed(SCREEN, data.BUTTON_TOTAL + 1)
-            # YELLOW
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_f:
-                    actions.drawPushed(SCREEN, data.BUTTON_TOTAL + 2)
-            # BLUE
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_g:
-                    actions.drawPushed(SCREEN, data.BUTTON_TOTAL + 3)
-            # ORANGE
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_h:
-                    actions.drawPushed(SCREEN, data.BUTTON_TOTAL + 4)
-            # quit
-            if event.type == pygame.QUIT:
-                playing = False
-
-            pygame.display.flip()
-            pygame.display.update()
-
+        actions.drawStaticAssets(SCREEN)
+        inputs = actions.getInputs(SCREEN)
+        actions.noteEngine(SCREEN, NOTES, notes_onScreen, inputs, game_stats)
+        actions.updateSCREEN()
     pygame.quit()
 
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+#
+#
+# RUN GAME
 startScreen()
