@@ -12,7 +12,7 @@
 - use MIDI values 64-60 for green-orange notes respectively (default key controls are S-D-F-G-H)
 - (1/4 notes and below default to 0 sustain)
 - export MIDI, and convert to JSON using https://tonejs.github.io/Midi/ (thank you!)
-- copy and save the output into a .txt file and save into the JSON_FILES folder
+- copy and save the output into a .txt file in JSON_FILES 
 - the parseJson() method in actions.py will grab data from the tree and write to a new excel file in the LOADED_SONGS folder
 - append song metadata to data.py and update relevant methods in actions.py
 
