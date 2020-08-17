@@ -3,7 +3,6 @@
 #
 import pygame
 
-
 # WINDOW TITLE/CAPTION
 CAPTION = "pyHero"
 
@@ -15,27 +14,43 @@ HEIGHT = 800
 NOTE_DIMENSIONS = (80, 45)
 
 # ASSET COLORS
-LANE_LINE_COLOR = (128, 128, 128)
+LANE_LINE_COLOR = (45, 45, 45)
 BACKGROUND_COLOR = (0, 0, 0)
+TEXT_WHITE = (255, 255, 255)
+TEXT_GREEN = (0, 255, 0)
+TEXT_RED = (255, 0, 0)
 
 # PROPERTIES
 RUN = True
-FPS = 100
+FPS = 60
+VELOCITY = 10
 BUTTON_TOTAL = 5
 LANE_LINE_TOTAL = 5
 MAX_NOTES_PER_SONG = 2000
-HIT_AREA = (664, 720)
+SET_BACK_TIME = 1200
+# - - - - - - - - - -
+HIT_AREA = (695, 710)
+# - - - - - - - - - -
 
-# NON-ITERABLE PNG ASSETS
-BACKGROUND = pygame.image.load('BACKGROUND.png')
-LOAD_SCREEN_TEXT = pygame.image.load('LOAD_SCREEN_TEXT.png')
+# NON-ITERABLE FILES
+BACKGROUND = pygame.image.load('IMAGE_FILES/BACKGROUND.png')
+LOAD_SCREEN_TEXT = pygame.image.load('IMAGE_FILES/LOAD_SCREEN_TEXT.png')
+HIT_ENTER_TEXT = 'IMAGE_FILES/HIT_ENTER.png'
+HIT_ENTER_TEXT_ANCHOR = (450, 775)
+HIT_ENTER_DIM = (100, 12)
 LOAD_SCREEN_TEXT_ANCHOR = (410, 353)
 NOTES_BUBBLE_FX = 'AUDIO_FILES/NOTES_BUBBLE_FX.wav'
+MISSED_NOTE = 'IMAGE_FILES/MISSED_NOTE.png'
 
 # - - -
 # SONGS
 # - - -
-SONG_1 = 'TEST_SONG.xlsx'
+SONG_1 = ['SONG_FILES/LOADED_SONGS/Exposed_demo.xlsx',
+          'SONG_FILES/MP3_FILES/Exposed_demo.mp3',
+          '"Exposed" by Old Sol (demo)']
+SONG_2 = ['SONG_FILES/LOADED_SONGS/Rosalyn.xlsx',
+          'SONG_FILES/MP3_FILES/Rosalyn.mp3',
+          '"Rosalyn" by Better Love']
 
 # MULTIPLIER STAGES
 POINTS_PER_NOTE = 25
@@ -53,6 +68,12 @@ NOTES_XY_ANCHORS = [(300, 700),  # GREEN
                     (460, 700),  # YELLOW
                     (540, 700),  # BLUE
                     (620, 700)]  # ORANGE
+
+MOVING_NOTE_ANCHORS = [300,  # GREEN
+                       380,  # RED
+                       460,  # YELLOW
+                       540,  # BLUE
+                       620]  # ORANGE
 
 # STATIC ANCHOR POINTS - X,Y VALUES REPRESENTING
 # ENDING X,Y-POS OF EACH LANE LINE
@@ -80,7 +101,6 @@ DYNAMIC_NOTE_X_ANCHORS = [(300, 700),  # GREEN
                           (620, 700)]  # ORANGE
 
 # "COLOR_pushed.png" ANCHORS GIVEN UNIQUE X &or Y DIMENSIONS
-# -- ORIGIN @ NW CORNER --
 PUSHED_NOTES_XY_ANCHORS = [(300, 700),  # GREEN
                            (380, 700),  # RED
                            (460, 700),  # YELLOW
@@ -102,21 +122,14 @@ NOTE_COLORS = ['GREEN',
 
 # STRING LIST OF COLOR NAMES
 # USED TO LOOP AND GENERATE NOTE OBJECTS
-NOTES_PNG = ['GREEN.png',
-             'RED.png',
-             'YELLOW.png',
-             'BLUE.png',
-             'ORANGE.png',
-             'GREEN_DOWN.png',
-             'RED_DOWN.png',
-             'YELLOW_DOWN.png',
-             'BLUE_DOWN.png',
-             'ORANGE_DOWN.png']
+NOTES_PNG = ['IMAGE_FILES/GREEN.png',
+             'IMAGE_FILES/RED.png',
+             'IMAGE_FILES/YELLOW.png',
+             'IMAGE_FILES/BLUE.png',
+             'IMAGE_FILES/ORANGE.png',
+             'IMAGE_FILES/GREEN_DOWN.png',
+             'IMAGE_FILES/RED_DOWN.png',
+             'IMAGE_FILES/YELLOW_DOWN.png',
+             'IMAGE_FILES/BLUE_DOWN.png',
+             'IMAGE_FILES/ORANGE_DOWN.png']
 
-# TO-DO:
-# - ADD "SELECT IMAGE DIRECTORY" OPTION
-# - AUTO READ FILE NAMES INTO ABOVE LIST(S)
-# - RETURN LIST OF POINTERS TO PNGs
-#
-# NOTE PNG DIRECTORY & NAME LIST
-IMAGE_FILE_DIRECTORY = 'IMAGE_FILES'
