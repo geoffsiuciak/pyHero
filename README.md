@@ -7,6 +7,7 @@
 
 
 # MAKE A CHART:
+- build by collecting all files into one directory called pyHero
 - creating custom songs is easy- open the song and MIDI editor inside any DAW, ensuring your audio starts at 0:00
 - if a note occurs within the first 1200 ms of the song, add 2 bars of silence before the audio begins
 - use MIDI values 64-60 for green-orange notes respectively (default key controls are S-D-F-G-H)
