@@ -1,5 +1,5 @@
 #
-# ACTION METHODS
+# ACTIONS
 #
 import pygame
 import xlrd
