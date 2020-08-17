@@ -1,6 +1,5 @@
 # pyHero
-2-D rhythm game with custom charting solution
-2 songs included:
+2-D rhythm game with custom charting solution. Includes 2 songs:
 - "Exposed" by Old Sol (demo)
 - "Rosalyn" by Better Love (cover)
 
