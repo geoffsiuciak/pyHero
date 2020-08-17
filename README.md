@@ -10,6 +10,7 @@
 - creating custom songs is easy- open the song and MIDI editor inside any DAW, ensuring your audio starts at 0:00
 - if a note occurs within the first 1200 ms of the song, add 2 bars of silence before the audio begins
 - use MIDI values 64-60 for green-orange notes respectively (default key controls are S-D-F-G-H)
+- (1/4 notes and below default to 0 sustain)
 - export MIDI, and convert to JSON using https://tonejs.github.io/Midi/ (thank you!)
 - copy and save the output into a .txt file and save into the JSON_FILES folder
 - the parseJson() method in actions.py will grab data from the tree and write to a new excel file in the LOADED_SONGS folder
