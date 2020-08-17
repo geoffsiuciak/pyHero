@@ -37,7 +37,7 @@ def startScreen():
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# STARTUP SCREEN
+# MENU SCREEN
 def menuScreen():
     start_screen = True
     while start_screen:
