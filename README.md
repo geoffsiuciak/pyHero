@@ -1,5 +1,8 @@
 # pyHero
 2-D rhythm game with custom charting solution
+2 songs included:
+- "Exposed" by Old Sol (demo)
+- "Rosalyn" by Better Love (cover)
 
 # MAKE A CHART:
 - creating custom songs is easy. using the MIDI editor inside any DAW, line up your audio and midi start point at 0:00
