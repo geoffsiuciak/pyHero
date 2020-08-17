@@ -23,6 +23,7 @@
 
 # to-do, features to add
 - post-game screen
+- horizontal beat/marker lines in lane highway
 - sustain bars: complete .blit() animation using note.SUSTAIN_LENGTH attribute
 - retool input comparisons on chords (some can be hit, most are still buggy)
 - clean up excel formatting in actions.parseJson() & automate reading/parsing when new files are found in JSON_FILES
