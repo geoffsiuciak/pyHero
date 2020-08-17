@@ -3,6 +3,9 @@
 - "Exposed" by Old Sol (demo)
 - "Rosalyn" by Better Love (cover)
 
+[![](http://img.youtube.com/vi/Wosj12coIN4/0.jpg)](http://www.youtube.com/watch?v=Wosj12coIN4 "pyHero")
+
+
 # MAKE A CHART:
 - creating custom songs is easy. open the song and MIDI editor inside any DAW, ensuring your audio starts at 0:00
 - if a note occurs within the first 1200 ms of the song, add 2 bars of silence before the audio begins
